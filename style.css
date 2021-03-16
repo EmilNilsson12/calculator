@@ -1,0 +1,65 @@
+body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#calculator {
+    width: 50vw;
+    height: 60vh;
+    background-color: green;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "output output output output"
+      "numbers numbers numbers divide"
+      "numbers numbers numbers multiply"
+      "numbers numbers numbers minus"
+      "numbers numbers numbers plus"
+      "enter enter enter enter";
+      
+}
+
+.enter { grid-area: enter; }
+.plus { grid-area: plus; }
+.minus { grid-area: minus; }
+.multiply { grid-area: multiply; }
+.divide { grid-area: divide; }
+.output { grid-area: output; }
+.numbers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "seven eight nine"
+      "four five six"
+      "one two three"
+      "zero zero zero";
+    grid-area: numbers;
+  }
+
+#calculator > div {
+    width: 100%;
+}
+
+
+#output {
+    background-color: yellow;
+}
+
+#buttons {
+    background-color: coral;
+}
+
+#enter {
+    background-color: darkgoldenrod;
+}
