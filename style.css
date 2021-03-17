@@ -9,57 +9,71 @@ body {
     
 }
 
-#calculator {
+main {
     width: 50vw;
     height: 60vh;
-    background-color: green;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-      "output output output output"
-      "numbers numbers numbers divide"
-      "numbers numbers numbers multiply"
-      "numbers numbers numbers minus"
-      "numbers numbers numbers plus"
-      "enter enter enter enter";
-      
 }
 
-.enter { grid-area: enter; }
-.plus { grid-area: plus; }
-.minus { grid-area: minus; }
-.multiply { grid-area: multiply; }
-.divide { grid-area: divide; }
-.output { grid-area: output; }
-.numbers {
+.grid-container div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
     gap: 0px 0px;
     grid-template-areas:
-      "seven eight nine"
-      "four five six"
-      "one two three"
-      "zero zero zero";
-    grid-area: numbers;
+      "display display display display display"
+      "seven eight nine divide enter"
+      "four five six multiplyy enter"
+      "one two three minus enter"
+      "zeroo zeroo comma plus back";
   }
+  .display { grid-area: display; }
+  .zeroo { grid-area: zeroo; }
+  .comma { grid-area: comma; }
+  .plus { grid-area: plus; }
+  .minus { grid-area: minus; }
+  .multiplyy { grid-area: multiplyy; }
+  .divide { grid-area: divide; }
+  .enter { grid-area: enter; }
+  .back { grid-area: back; }
+  .seven { grid-area: seven; }
+  .eight { grid-area: eight; }
+  .nine { grid-area: nine; }
+  .one { grid-area: one; }
+  .two { grid-area: two; }
+  .three { grid-area: three; }
+  .four { grid-area: four; }
+  .five { grid-area: five; }
+  .six { grid-area: six; }
 
-#calculator > div {
-    width: 100%;
-}
 
-
-#output {
+.display {
     background-color: yellow;
 }
 
-#buttons {
+.num {
     background-color: coral;
 }
 
-#enter {
+.operator {
+    background-color: darkseagreen;   
+}
+
+.comma {
+    background-color: hotpink;
+}
+
+.enter {
     background-color: darkgoldenrod;
+}
+
+.back {
+    background-color: darkolivegreen;
 }
