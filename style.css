@@ -14,14 +14,6 @@ main {
     height: 60vh;
 }
 
-.grid-container div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    border: 1px solid black;
-}
-
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -56,6 +48,18 @@ main {
 
 .display {
     background-color: yellow;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.display span {
+    margin: 5px;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid black;
+    width: 100%;
+    direction: rtl;
 }
 
 .num {
