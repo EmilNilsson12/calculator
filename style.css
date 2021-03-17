@@ -59,6 +59,7 @@ main {
     background-color: white;
     border: 1px solid black;
     width: 100%;
+    min-height: 18px;
     direction: rtl;
 }
 
@@ -74,10 +75,7 @@ main {
     background-color: hotpink;
 }
 
-.enter {
-    background-color: darkgoldenrod;
-}
 
 .back {
-    background-color: darkolivegreen;
+    background-color: red;
 }
