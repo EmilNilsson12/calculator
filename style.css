@@ -10,7 +10,7 @@ body {
 }
 
 main {
-    width: 50vw;
+    min-width: 500px;
     height: 60vh;
 }
 
@@ -61,6 +61,11 @@ main {
     width: 100%;
     min-height: 18px;
     direction: rtl;
+}
+
+#operator-display {
+    width: 26px;
+    text-align: center;
 }
 
 .num {

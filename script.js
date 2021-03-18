@@ -34,6 +34,7 @@ btns.addEventListener('mousedown', (evt) => {
             case '=':
                 if (numObj.prevNum != null && numObj.savedOperator != null && numObj.currentNum != null) {
                     calculate()
+                    
                 }
 
                 break; 
@@ -65,6 +66,7 @@ btns.addEventListener('mousedown', (evt) => {
                     
                 break;
         }
+        printNums()
         console.table(numObj)
     }
 
@@ -163,4 +165,15 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
     return num1 / num2
+}
+
+
+const numDisplay = document.getElementById('num-display');
+const operatorDisplay = document.getElementById('operator-display');
+const numDisplayTotal = document.getElementById('num-display-total');
+
+function printNums() {
+    numDisplay.innerHTML = numObj.currentNum
+    numDisplayTotal.innerHTML = numObj.prevNum
+    operatorDisplay.innerHTML = numObj.savedOperator
 }
