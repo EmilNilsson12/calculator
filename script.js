@@ -68,6 +68,11 @@ btns.addEventListener('mousedown', (evt) => {
                 }
                     
                 break;
+            
+            case '-/+':
+                swapSign()
+
+                break;
         }
         printNums()
         console.table(numObj)
@@ -190,5 +195,36 @@ function decimalAlreadyExists() {
 
     if (found === undefined) return false
     else return true
+}
+
+function swapSign() {
+    if (numObj.currentNum != null) {
+        // Convert string to array
+        let num = numObj.currentNum.split('');
+
+        if (num[0] != '-') {
+            // Add '-' to start
+            num.unshift('-');
+            
+            // Convert back to string
+            num = num.join('');
+            
+            // Replace currentNum with new value
+            numObj.currentNum = num;
+        }
+        else {
+            // Add '-' to start
+            num.shift();
+            
+            // Convert back to string
+            num = num.join('');
+            
+            // Replace currentNum with new value
+            numObj.currentNum = num;
+        }
+    }
+    else {
+        numObj.currentNum = '-'
+    }
 }
 
