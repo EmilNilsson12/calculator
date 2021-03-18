@@ -39,6 +39,7 @@ btns.addEventListener('mousedown', (evt) => {
 
             case 'del':
                 // Delete latest entered digit/comma from currentNum
+                deleteLastEnteredDigit()
                 break;
 
             case ',':
@@ -67,5 +68,22 @@ function updateCurrentNum(digit) {
     }
     else {
         numObj.currentNum += digit;
+    }
+}
+
+function deleteLastEnteredDigit() {
+    if (numObj.currentNum != null) {
+        
+        // Convert string to array
+        let num = numObj.currentNum.split('');
+
+        // Remove last digit
+        num.pop();
+        
+        // Convert back to string
+        num = num.join('');
+
+        // Replace currentNum with new value
+        numObj.currentNum = num;
     }
 }
