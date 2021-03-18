@@ -79,7 +79,7 @@ btns.addEventListener('mousedown', (evt) => {
 });
 
 function updateCurrentNum(digit) {
-    if (numObj.currentNum == null) {
+    if (numObj.currentNum == null || numObj.currentNum == '0' && digit != '.') {
         numObj.currentNum = digit
     }
     else {
