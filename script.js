@@ -3,7 +3,7 @@ const btns = document.getElementById('calculator');
 const numObj = {
     currentNum: null,
     prevNum: null,
-    prevOperator: null
+    savedOperator: null
 }
 
 
@@ -25,6 +25,7 @@ btns.addEventListener('mousedown', (evt) => {
             case '7':
             case '8':
             case '9':
+            case '0':
                 // Update currentNum with btnPressed
                 updateCurrentNum(btnPressed)
                 break;
@@ -50,14 +51,21 @@ btns.addEventListener('mousedown', (evt) => {
             case '*':
             case '-':
             case '+':
+                if (numObj.prevNum != null && numObj.savedOperator != null && numObj.currentNum != null) {
+                    calculate()
+                }
 
+                if (numObj.currentNum != null || numObj.prevNum != null) {
+                    saveOperator(btnPressed)
+                }
+
+                if (numObj.currentNum != null) {
+                    moveCurrentNumtoPrevNum()
+                }
+                    
                 break;
-
-            
-
-            case '0':
         }
-
+        console.table(numObj)
     }
 
 });
@@ -86,4 +94,48 @@ function deleteLastEnteredDigit() {
         // Replace currentNum with new value
         numObj.currentNum = num;
     }
+}
+
+
+function saveOperator(operator) {
+    // Save operator in numObj
+    numObj.savedOperator = operator;
+}
+
+function moveCurrentNumtoPrevNum() {
+    numObj.prevNum = numObj.currentNum;
+    numObj.currentNum = null;
+}
+
+function calculate() {
+    // Get prevNum
+
+    let result;
+    switch(numObj.savedOperator) {
+
+        case '+':
+            result = add()
+            break;
+
+        case '-':
+            result = subtract()
+            break;
+
+        case '*':
+            result = multiply()
+            break;
+
+        case '/':
+            result = divide()
+            break;
+    }
+
+    // Save result in prevNum
+    numObj.prevNum = result;
+
+    // Clear currentNum
+    numObj.currentNum = null;
+
+    // Clear savedOperator
+    numObj.savedOperator = null;
 }
