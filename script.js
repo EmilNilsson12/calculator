@@ -9,11 +9,11 @@ const numObj = {
 
 btns.addEventListener('mousedown', (evt) => {
     const btnPressed = evt.target.textContent;
-    
+
     if (btnPressed != '') {
         console.log(btnPressed)
         console.log(typeof btnPressed)
-    
+
         switch (btnPressed) {
 
             case '1':
@@ -34,17 +34,15 @@ btns.addEventListener('mousedown', (evt) => {
             case '=':
                 if (numObj.prevNum != null && numObj.savedOperator != null && numObj.currentNum != null) {
                     calculate()
-                    
                 }
-
-                break; 
+                break;
 
             case 'del':
                 // Delete latest entered digit/comma from currentNum
                 deleteLastEnteredDigit()
                 break;
 
-            case ',':
+            case '.':
                 // Check if decimal already exists
                 if (!decimalAlreadyExists()) {
                     updateCurrentNum(btnPressed)
@@ -66,9 +64,9 @@ btns.addEventListener('mousedown', (evt) => {
                 if (numObj.currentNum != null) {
                     moveCurrentNumtoPrevNum()
                 }
-                    
+
                 break;
-            
+
             case '-/+':
                 swapSign()
 
@@ -91,13 +89,13 @@ function updateCurrentNum(digit) {
 
 function deleteLastEnteredDigit() {
     if (numObj.currentNum != null) {
-        
+
         // Convert string to array
         let num = numObj.currentNum.split('');
 
         // Remove last digit
         num.pop();
-        
+
         // Convert back to string
         num = num.join('');
 
@@ -117,44 +115,48 @@ function saveOperator(operator) {
 }
 
 function moveCurrentNumtoPrevNum() {
-    numObj.prevNum = numObj.currentNum;
-    numObj.currentNum = null;
+    if (numObj.currentNum != '-') {
+        numObj.prevNum = parseFloat(numObj.currentNum);
+        numObj.currentNum = null;
+    }
 }
 
 function calculate() {
-    // Get prevNum
+    if (numObj.currentNum != '-') {
+        const num1 = parseFloat(numObj.prevNum);
+        const num2 = parseFloat(numObj.currentNum);
 
-    const num1 = parseFloat(numObj.prevNum);
-    const num2 = parseFloat(numObj.currentNum);
+        let result;
+        switch (numObj.savedOperator) {
 
-    let result;
-    switch(numObj.savedOperator) {
+            case '+':
+                result = add(num1, num2)
+                break;
 
-        case '+':
-            result = add(num1, num2)
-            break;
+            case '-':
+                result = subtract(num1, num2)
+                break;
 
-        case '-':
-            result = subtract(num1, num2)
-            break;
+            case '*':
+                result = multiply(num1, num2)
+                break;
 
-        case '*':
-            result = multiply(num1, num2)
-            break;
+            case '/':
+                result = divide(num1, num2)
+                break;
+        }
 
-        case '/':
-            result = divide(num1, num2)
-            break;
+        if (isNaN(result)) result = 0;
+
+        // Save result in prevNum
+        numObj.prevNum = result;
+
+        // Clear currentNum
+        numObj.currentNum = null;
+
+        // Clear savedOperator
+        numObj.savedOperator = null;
     }
-
-    // Save result in prevNum
-    numObj.prevNum = result;
-
-    // Clear currentNum
-    numObj.currentNum = null;
-
-    // Clear savedOperator
-    numObj.savedOperator = null;
 }
 
 
@@ -205,20 +207,20 @@ function swapSign() {
         if (num[0] != '-') {
             // Add '-' to start
             num.unshift('-');
-            
+
             // Convert back to string
             num = num.join('');
-            
+
             // Replace currentNum with new value
             numObj.currentNum = num;
         }
         else {
             // Add '-' to start
             num.shift();
-            
+
             // Convert back to string
             num = num.join('');
-            
+
             // Replace currentNum with new value
             numObj.currentNum = num;
         }

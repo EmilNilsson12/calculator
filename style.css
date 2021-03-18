@@ -12,10 +12,16 @@ body {
 main {
     min-width: 500px;
     height: 60vh;
-    padding: 10px;
+    padding: 30px;
+    background-color: rgba(98, 68, 89, 0.9);
+    border-radius: 10px;
 }
 
+
 .grid-container {
+    height: 100%;
+    width: 100%;
+
     display: grid;
     grid-template-columns: repeat(4, 2fr) 3fr;
     grid-template-rows: 3fr repeat(4, 2fr);
