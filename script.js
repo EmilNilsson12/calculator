@@ -94,6 +94,10 @@ function deleteLastEnteredDigit() {
         // Replace currentNum with new value
         numObj.currentNum = num;
     }
+
+    if (numObj.currentNum == '') {
+        numObj.currentNum = null
+    }
 }
 
 
