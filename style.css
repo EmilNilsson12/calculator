@@ -53,14 +53,16 @@ main {
     align-items: center;
 }
 
-.display span {
+.display > span {
     margin: 5px;
     padding: 5px;
     background-color: white;
     border: 1px solid black;
     width: 100%;
     min-height: 18px;
-    direction: rtl;
+
+    display: flex;
+    justify-content: flex-end;    
 }
 
 #operator-display {

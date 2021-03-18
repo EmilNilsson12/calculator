@@ -45,7 +45,10 @@ btns.addEventListener('mousedown', (evt) => {
                 break;
 
             case ',':
-
+                // Check if decimal already exists
+                if (!decimalAlreadyExists()) {
+                    updateCurrentNum(btnPressed)
+                }
                 break;
 
             case '/':
@@ -116,8 +119,8 @@ function moveCurrentNumtoPrevNum() {
 function calculate() {
     // Get prevNum
 
-    const num1 = parseInt(numObj.prevNum);
-    const num2 = parseInt(numObj.currentNum);
+    const num1 = parseFloat(numObj.prevNum);
+    const num2 = parseFloat(numObj.currentNum);
 
     let result;
     switch(numObj.savedOperator) {
@@ -168,12 +171,24 @@ function divide(num1, num2) {
 }
 
 
-const numDisplay = document.getElementById('num-display');
+const numDisplay = document.getElementById('num-inner-right');
 const operatorDisplay = document.getElementById('operator-display');
-const numDisplayTotal = document.getElementById('num-display-total');
+const numDisplayTotal = document.getElementById('num-inner-left');
 
 function printNums() {
     numDisplay.innerHTML = numObj.currentNum
     numDisplayTotal.innerHTML = numObj.prevNum
     operatorDisplay.innerHTML = numObj.savedOperator
 }
+
+function decimalAlreadyExists() {
+    let currentNumAsArr = numObj.currentNum.split('');
+
+    const found = currentNumAsArr.find(digit => digit == ',')
+
+    console.log(found);
+
+    if (found === undefined) return false
+    else return true
+}
+
