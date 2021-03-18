@@ -32,9 +32,9 @@ btns.addEventListener('mousedown', (evt) => {
 
 
             case '=':
-                // Calculate savedNum and currentNum using currentOperator
-
-                // Overwrite savedNum with result
+                if (numObj.prevNum != null && numObj.savedOperator != null && numObj.currentNum != null) {
+                    calculate()
+                }
 
                 break; 
 
@@ -110,23 +110,26 @@ function moveCurrentNumtoPrevNum() {
 function calculate() {
     // Get prevNum
 
+    const num1 = parseInt(numObj.prevNum);
+    const num2 = parseInt(numObj.currentNum);
+
     let result;
     switch(numObj.savedOperator) {
 
         case '+':
-            result = add()
+            result = add(num1, num2)
             break;
 
         case '-':
-            result = subtract()
+            result = subtract(num1, num2)
             break;
 
         case '*':
-            result = multiply()
+            result = multiply(num1, num2)
             break;
 
         case '/':
-            result = divide()
+            result = divide(num1, num2)
             break;
     }
 
@@ -138,4 +141,22 @@ function calculate() {
 
     // Clear savedOperator
     numObj.savedOperator = null;
+}
+
+
+
+function add(num1, num2) {
+    return num1 + num2
+}
+
+function subtract(num1, num2) {
+    return num1 - num2
+}
+
+function multiply(num1, num2) {
+    return num1 * num2
+}
+
+function divide(num1, num2) {
+    return num1 / num2
 }
