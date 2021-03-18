@@ -23,15 +23,15 @@ main {
     width: 100%;
 
     display: grid;
-    grid-template-columns: repeat(4, 2fr) 3fr;
+    grid-template-columns: repeat(4, 2fr) 1f 3fr;
     grid-template-rows: 3fr repeat(4, 2fr);
     gap: 0px 0px;
     grid-template-areas:
-      "display display display display display"
-      "seven eight nine divide enter"
-      "four five six multiplyy enter"
-      "one two three minus enter"
-      "swapsign zeroo comma plus back";
+      "display display display display display display"
+      "seven eight nine divide enter enter"
+      "four five six multiplyy enter enter"
+      "one two three minus enter enter"
+      "swapsign zeroo comma plus clear back";
   }
   .display { grid-area: display; }
   .zeroo { grid-area: zeroo; }
@@ -43,6 +43,7 @@ main {
   .divide { grid-area: divide; }
   .enter { grid-area: enter; }
   .back { grid-area: back; }
+  .clear { grid-area: clear; }
   .seven { grid-area: seven; }
   .eight { grid-area: eight; }
   .nine { grid-area: nine; }

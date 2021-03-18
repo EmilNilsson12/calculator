@@ -42,6 +42,11 @@ btns.addEventListener('mousedown', (evt) => {
                 deleteLastEnteredDigit()
                 break;
 
+            case 'clear':
+                // Clear all displays
+                clearAll()
+                break;
+
             case '.':
                 // Check if decimal already exists
                 if (!decimalAlreadyExists()) {
@@ -228,5 +233,17 @@ function swapSign() {
     else {
         numObj.currentNum = '-'
     }
+}
+
+
+function clearAll() {
+    // Clear prevNum
+    numObj.prevNum = null;
+
+    // Clear currentNum
+    numObj.currentNum = null;
+
+    // Clear savedOperator
+    numObj.savedOperator = null;
 }
 
